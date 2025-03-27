@@ -1,39 +1,1119 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>BioMaster Sofía 🧠</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BioEstudio Sofía</title>
+    <style>
+        :root {
+            --primary: #7C3AED;
+            --secondary: #A78BFA;
+            --accent: #F59E0B;
+            --background: #F3F4F6;
+            --text: #1F2937;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: var(--background);
+            color: var(--text);
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .menu-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .chapter-card {
+            background: white;
+            padding: 25px;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .chapter-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 12px rgba(0,0,0,0.1);
+        }
+
+        .theory-container {
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+        }
+
+        .quiz-container {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 10px 15px rgba(0,0,0,0.05);
+        }
+
+        .option {
+            padding: 16px 20px;
+            margin: 12px 0;
+            border: 2px solid #E5E7EB;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .option:hover {
+            background: #F3F4F6;
+            transform: scale(1.02);
+        }
+
+        .option.correct {
+            background: #D1FAE5;
+            border-color: #34D399;
+        }
+
+        .option.wrong {
+            background: #FEE2E2;
+            border-color: #F87171;
+        }
+
+        .nav-btn {
+            background: var(--primary);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 8px;
+            border: none;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .grid {
+            display: grid;
+            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            margin: 20px 0;
+        }
+
+        .card {
+            padding: 15px;
+            border-radius: 10px;
+            background: #F8FAFC;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th, td {
+            padding: 12px;
+            border: 1px solid #E5E7EB;
+            text-align: left;
+        }
+
+        th {
+            background: var(--primary);
+            color: white;
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
-    <div class="header">
-      <h1>🌱 BioMaster Sofía 🧠</h1>
-      <div class="progress-bar">
-        <div class="progress"></div>
-      </div>
+    <div class="container">
+        <header class="header">
+            <h1>🌱 BioEstudio Sofía 🧠</h1>
+        </header>
+        
+        <main id="mainContent"></main>
     </div>
 
-    <div class="chapters-container"></div>
+    <script>
+        const contenido = {
+            capitulos: [
+                {
+                    id: 'estimulos',
+                    titulo: '🌍 Estímulos y Receptores',
+                    teoria: `
+                        <h2>Del Estímulo a la Respuesta</h2>
+                        <ol>
+                            <li><strong>Captación:</strong> Receptores detectan estímulos</li>
+                            <li><strong>Procesamiento:</strong> Sistema nervioso analiza la información</li>
+                            <li><strong>Respuesta:</strong> Ejecución motora o glandular</li>
+                        </ol>
 
-    <div class="question-container hidden">
-      <div class="question-header">
-        <h2 class="chapter-title"></h2>
-        <div class="score">🏆 Puntos: <span>0</span></div>
-      </div>
-      <div class="question-body"></div>
-      <div class="explanation hidden"></div>
-      <button class="next-btn hidden">Continuar →</button>
-    </div>
-  </div>
+                        <h3>Clasificación de Receptores</h3>
+                        <div class="grid">
+                            <div class="card">
+                                <h4>Por Origen:</h4>
+                                <p>🔹 <strong>Externos:</strong> Piel, ojos, oídos, nariz, lengua</p>
+                                <p>🔹 <strong>Internos:</strong> Órganos internos (viscerorreceptores)</p>
+                                <p>🔹 <strong>Propioceptores:</strong> Músculos y articulaciones</p>
+                            </div>
+                            
+                            <div class="card">
+                                <h4>Por Naturaleza:</h4>
+                                <p>🌡️ Termorreceptores (temperatura)</p>
+                                <p>⚠️ Nociceptores (dolor)</p>
+                                <p>🖐️ Mecanorreceptores (presión/vibración)</p>
+                                <p>👃 Quimiorreceptores (sustancias químicas)</p>
+                                <p>🌈 Fotorreceptores (luz)</p>
+                            </div>
+                        </div>
 
-  <div class="celebration hidden">
-    <div class="message">¡Capítulo Dominado! 🎉</div>
-    <button class="back-btn">Volver a Capítulos</button>
-  </div>
+                        <h3>Proceso de Transmisión</h3>
+                        <p>Estímulo → Receptor → Impulso nervioso → SNC → Efector (músculo/glándula)</p>
+                    `,
+                    preguntas: [
+                        {
+                            pregunta: "¿Qué receptores detectan la posición del cuerpo?",
+                            opciones: [
+                                { texto: "Propioceptores", correcta: true },
+                                { texto: "Nociceptores", correcta: false },
+                                { texto: "Termorreceptores", correcta: false }
+                            ],
+                            explicacion: "¡Exacto! Los propioceptores detectan la posición y movimiento muscular."
+                        },
+                        {
+                            pregunta: "Los quimiorreceptores se encuentran en:",
+                            opciones: [
+                                { texto: "Lengua y nariz", correcta: true },
+                                { texto: "Piel y oído", correcta: false },
+                                { texto: "Retina", correcta: false }
+                            ],
+                            explicacion: "✅ Correcto! Detectan sustancias químicas en gusto y olfato."
+                        },
+                        {
+                            pregunta: "¿Qué receptores activan el reflejo del dolor?",
+                            opciones: [
+                                { texto: "Nociceptores", correcta: true },
+                                { texto: "Mecanorreceptores", correcta: false },
+                                { texto: "Termorreceptores", correcta: false }
+                            ],
+                            explicacion: "¡Bien! Los nociceptores detectan estímulos potencialmente dañinos."
+                        },
+                        {
+                            pregunta: "La córnea forma parte de:",
+                            opciones: [
+                                { texto: "El ojo", correcta: true },
+                                { texto: "El oído", correcta: false },
+                                { texto: "La piel", correcta: false }
+                            ],
+                            explicacion: "🎯 Correcto! La córnea es la capa transparente del ojo."
+                        },
+                        {
+                            pregunta: "El sistema nervioso procesa:",
+                            opciones: [
+                                { texto: "La información de los receptores", correcta: true },
+                                { texto: "La producción de hormonas", correcta: false },
+                                { texto: "La digestión de alimentos", correcta: false }
+                            ],
+                            explicacion: "💡 Exacto! Analiza la información sensorial."
+                        }
+                    ]
+                },
 
-  <!-- Tu archivo JS personalizado -->
-  <script src="app.js"></script>
+
+
+                // Módulo Gusto
+                {
+                    id: 'gusto',
+                    titulo: '👅 El Gusto',
+                    teoria: `
+                        <h2>Anatomía del Sentido del Gusto</h2>
+                        <div class="grid">
+                            <div class="card">
+                                <h4>Estructuras Clave</h4>
+                                <p>• Lengua: Órgano principal</p>
+                                <p>• Papilas gustativas: Contienen botones gustativos</p>
+                                <p>• Botones gustativos: Con quimiorreceptores</p>
+                            </div>
+                            <div class="card">
+                                <h4>Sabores Básicos</h4>
+                                <p>• Dulce (punta de la lengua)</p>
+                                <p>• Salado (bordes anteriores)</p>
+                                <p>• Ácido (bordes posteriores)</p>
+                                <p>• Amargo (parte posterior)</p>
+                                <p>• Umami (glutamato)</p>
+                            </div>
+                        </div>
+                        <h3>Proceso de Percepción</h3>
+                        <ol>
+                            <li>Las sustancias se disuelven en saliva</li>
+                            <li>Estimulan los quimiorreceptores</li>
+                            <li>Señales viajan por nervio facial y glosofaríngeo</li>
+                            <li>Procesamiento en corteza gustativa</li>
+                        </ol>
+                    `,
+                    preguntas: [
+                        {
+                            pregunta: "Los botones gustativos contienen:",
+                            opciones: [
+                                { texto: "Quimiorreceptores", correcta: true },
+                                { texto: "Mecanorreceptores", correcta: false },
+                                { texto: "Termorreceptores", correcta: false }
+                            ],
+                            explicacion: "✅ Correcto! Detectan sustancias químicas disueltas."
+                        },
+                        {
+                            pregunta: "El sabor umami detecta:",
+                            opciones: [
+                                { texto: "Glutamato", correcta: true },
+                                { texto: "Glucosa", correcta: false },
+                                { texto: "Cloruro sódico", correcta: false }
+                            ],
+                            explicacion: "🍲 Presente en alimentos como el queso y la carne."
+                        },
+                        {
+                            pregunta: "Las papilas calciformes se encuentran:",
+                            opciones: [
+                                { texto: "En la base de la lengua", correcta: true },
+                                { texto: "En la punta de la lengua", correcta: false },
+                                { texto: "En el paladar", correcta: false }
+                            ],
+                            explicacion: "🗺️ Forman una 'V' en la parte posterior."
+                        },
+                        {
+                            pregunta: "El nervio responsable del gusto en la parte anterior:",
+                            opciones: [
+                                { texto: "Nervio facial", correcta: true },
+                                { texto: "Nervio glosofaríngeo", correcta: false },
+                                { texto: "Nervio vago", correcta: false }
+                            ],
+                            explicacion: "🧠 VII par craneal."
+                        },
+                        {
+                            pregunta: "La pérdida del gusto se llama:",
+                            opciones: [
+                                { texto: "Ageusia", correcta: true },
+                                { texto: "Anosmia", correcta: false },
+                                { texto: "Afasia", correcta: false }
+                            ],
+                            explicacion: "👅 Trastorno poco común."
+                        }
+                    ]
+                },
+
+                // Módulo Olfato
+                {
+                    id: 'olfato',
+                    titulo: '👃 El Olfato',
+                    teoria: `
+                        <h2>Anatomía del Sistema Olfativo</h2>
+                        <div class="grid">
+                            <div class="card">
+                                <h4>Partes Nasales</h4>
+                                <p>• Pituitaria amarilla: Zona olfativa</p>
+                                <p>• Pituitaria roja: Vascularización</p>
+                                <p>• Células olfativas: Neuronas bipolares</p>
+                            </div>
+                        </div>
+                        <h3>Proceso Olfativo</h3>
+                        <ol>
+                            <li>Moléculas odoríferas entran con el aire</li>
+                            <li>Se disuelven en moco nasal</li>
+                            <li>Estimulan cilios de células olfativas</li>
+                            <li>Señales viajan por nervio olfativo (I par craneal)</li>
+                            <li>Procesamiento en bulbo olfatorio</li>
+                        </ol>
+                        <h3>Características Únicas</h3>
+                        <p>• Único sentido que no pasa por el tálamo</p>
+                        <p>• Conexión directa con sistema límbico (emociones)</p>
+                    `,
+                    preguntas: [
+                        {
+                            pregunta: "Las células olfativas son:",
+                            opciones: [
+                                { texto: "Neuronas bipolares", correcta: true },
+                                { texto: "Células epiteliales", correcta: false },
+                                { texto: "Células gliales", correcta: false }
+                            ],
+                            explicacion: "🧠 Únicas neuronas directamente expuestas."
+                        },
+                        {
+                            pregunta: "El bulbo olfatorio pertenece al:",
+                            opciones: [
+                                { texto: "Encéfalo", correcta: true },
+                                { texto: "Nariz", correcta: false },
+                                { texto: "Sistema circulatorio", correcta: false }
+                            ],
+                            explicacion: "💡 Parte del sistema límbico."
+                        },
+                        {
+                            pregunta: "La anosmia afecta al sentido del:",
+                            opciones: [
+                                { texto: "Olfato", correcta: true },
+                                { texto: "Gusto", correcta: false },
+                                { texto: "Oído", correcta: false }
+                            ],
+                            explicacion: "👃 Pérdida común en infecciones respiratorias."
+                        },
+                        {
+                            pregunta: "Los humanos pueden distinguir aproximadamente:",
+                            opciones: [
+                                { texto: "1 billón de olores", correcta: true },
+                                { texto: "10,000 olores", correcta: false },
+                                { texto: "100 olores", correcta: false }
+                            ],
+                            explicacion: "🔢 Capacidad superior a lo que se creía."
+                        },
+                        {
+                            pregunta: "Las moléculas odoríferas deben ser:",
+                            opciones: [
+                                { texto: "Volátiles", correcta: true },
+                                { texto: "Sólidas", correcta: false },
+                                { texto: "Iónicas", correcta: false }
+                            ],
+                            explicacion: "💨 Para transportarse por el aire."
+                        }
+                    ]
+                },
+
+                // Módulo Oído
+                {
+                    id: 'oido',
+                    titulo: '👂 El Oído',
+                    teoria: `
+                        <h2>Anatomía Auditiva</h2>
+                        <div class="grid">
+                            <div class="card">
+                                <h4>Oído Externo</h4>
+                                <p>• Pabellón auditivo</p>
+                                <p>• Conducto auditivo</p>
+                                <p>• Tímpano</p>
+                            </div>
+                            <div class="card">
+                                <h4>Oído Medio</h4>
+                                <p>• Martillo</p>
+                                <p>• Yunque</p>
+                                <p>• Estribo</p>
+                            </div>
+                            <div class="card">
+                                <h4>Oído Interno</h4>
+                                <p>• Cóclea (caracol)</p>
+                                <p>• Canales semicirculares</p>
+                                <p>• Vestíbulo</p>
+                            </div>
+                        </div>
+                        <h3>Proceso Auditivo</h3>
+                        <ol>
+                            <li>Ondas sonoras vibran el tímpano</li>
+                            <li>Cadena de huesecillos amplifica</li>
+                            <li>Movimiento de líquido en cóclea</li>
+                            <li>Células ciliadas generan impulsos</li>
+                            <li>Nervio auditivo lleva señales al cerebro</li>
+                        </ol>
+                    `,
+                    preguntas: [
+                        {
+                            pregunta: "El hueso más pequeño del cuerpo es:",
+                            opciones: [
+                                { texto: "Estribo", correcta: true },
+                                { texto: "Martillo", correcta: false },
+                                { texto: "Yunque", correcta: false }
+                            ],
+                            explicacion: "🔍 Mide solo 3 mm."
+                        },
+                        {
+                            pregunta: "La función de la cóclea es:",
+                            opciones: [
+                                { texto: "Convertir vibraciones en señales", correcta: true },
+                                { texto: "Mantener el equilibrio", correcta: false },
+                                { texto: "Producir cera", correcta: false }
+                            ],
+                            explicacion: "🎵 Transformación mecánico-eléctrica."
+                        },
+                        {
+                            pregunta: "El líquido del oído interno se llama:",
+                            opciones: [
+                                { texto: "Endolinfa", correcta: true },
+                                { texto: "Perilinfa", correcta: false },
+                                { texto: "Humor acuoso", correcta: false }
+                            ],
+                            explicacion: "💧 Fluido esencial para la audición."
+                        },
+                        {
+                            pregunta: "El equilibrio dinámico se controla en:",
+                            opciones: [
+                                { texto: "Canales semicirculares", correcta: true },
+                                { texto: "Cóclea", correcta: false },
+                                { texto: "Tímpano", correcta: false }
+                            ],
+                            explicacion: "🔄 Detectan movimientos rotatorios."
+                        },
+                        {
+                            pregunta: "La hipoacusia afecta al:",
+                            opciones: [
+                                { texto: "Oído", correcta: true },
+                                { texto: "Olfato", correcta: false },
+                                { texto: "Gusto", correcta: false }
+                            ],
+                            explicacion: "👂 Pérdida parcial de audición."
+                        }
+                    ]
+                },
+
+                // Módulo Aparato Locomotor
+                {
+                    id: 'locomotor',
+                    titulo: '🏃 Aparato Locomotor',
+                    teoria: `
+                        <h2>Componentes Principales</h2>
+                        <div class="grid">
+                            <div class="card">
+                                <h4>Sistema Óseo</h4>
+                                <p>• 206 huesos</p>
+                                <p>• Funciones: Soporte, protección, almacén mineral</p>
+                            </div>
+                            <div class="card">
+                                <h4>Sistema Muscular</h4>
+                                <p>• +600 músculos</p>
+                                <p>• Tipos: Esquelético, liso, cardíaco</p>
+                            </div>
+                        </div>
+                        <h3>Mecánica del Movimiento</h3>
+                        <ol>
+                            <li>Músculo agonista se contrae</li>
+                            <li>Músculo antagonista se relaja</li>
+                            <li>Huesos actúan como palancas</li>
+                            <li>Articulaciones como puntos de apoyo</li>
+                        </ol>
+                        <h3>Tipos de Palancas</h3>
+                        <table>
+                            <tr><th>Tipo</th><th>Ejemplo</th></tr>
+                            <tr><td>1° Género</td><td>Movimiento cabeza</td></tr>
+                            <tr><td>2° Género</td><td>Ponerse de puntillas</td></tr>
+                            <tr><td>3° Género</td><td>Flexión de brazo</td></tr>
+                        </table>
+                    `,
+                    preguntas: [
+                        {
+                            pregunta: "El hueso más largo es:",
+                            opciones: [
+                                { texto: "Fémur", correcta: true },
+                                { texto: "Húmero", correcta: false },
+                                { texto: "Tibia", correcta: false }
+                            ],
+                            explicacion: "🦴 Representa 1/4 de la estatura."
+                        },
+                        {
+                            pregunta: "Los músculos antagonistas funcionan:",
+                            opciones: [
+                                { texto: "En oposición", correcta: true },
+                                { texto: "En cooperación", correcta: false },
+                                { texto: "Independientemente", correcta: false }
+                            ],
+                            explicacion: "⚖️ Permiten movimiento controlado."
+                        },
+                        {
+                            pregunta: "La función principal de las articulaciones es:",
+                            opciones: [
+                                { texto: "Permitir movimiento", correcta: true },
+                                { texto: "Producir sangre", correcta: false },
+                                { texto: "Almacenar calcio", correcta: false }
+                            ],
+                            explicacion: "🦴 Puntos de unión entre huesos."
+                        },
+                        {
+                            pregunta: "Los osteocitos son células:",
+                            opciones: [
+                                { texto: "Óseas", correcta: true },
+                                { texto: "Musculares", correcta: false },
+                                { texto: "Nerviosas", correcta: false }
+                            ],
+                            explicacion: "🔬 Mantienen tejido óseo."
+                        },
+                        {
+                            pregunta: "La mioglobina se encuentra en:",
+                            opciones: [
+                                { texto: "Músculos", correcta: true },
+                                { texto: "Huesos", correcta: false },
+                                { texto: "Ligamentos", correcta: false }
+                            ],
+                            explicacion: "💪 Almacena oxígeno en tejido muscular."
+                        }
+                    ]
+                },
+
+
+                {
+                    id: 'vista',
+                    titulo: '👁️ La Vista',
+                    teoria: `
+                        <h2>Anatomía del Ojo</h2>
+                        <div class="grid">
+                            <div>
+                                <h4>Partes Principales:</h4>
+                                <p>• Córnea: Capa transparente frontal</p>
+                                <p>• Iris: Controla tamaño pupilar</p>
+                                <p>• Cristalino: Enfoca la luz</p>
+                                <p>• Retina: Capa con fotorreceptores</p>
+                                <p>• Nervio óptico: Transmite señales al cerebro</p>
+                            </div>
+                            <div>
+                                <h4>Capas del Ojo:</h4>
+                                <p>1. Esclerótica (externa)</p>
+                                <p>2. Coroides (media)</p>
+                                <p>3. Retina (interna)</p>
+                            </div>
+                        </div>
+
+                        <h3>Formación de Imágenes</h3>
+                        <ol>
+                            <li>Luz atraviesa córnea y pupila</li>
+                            <li>Cristalino enfoca la luz sobre la retina</li>
+                            <li>Fotorreceptores transforman luz en impulsos</li>
+                            <li>Nervio óptico transmite información al cerebro</li>
+                        </ol>
+
+                        <h3>Defectos Visuales</h3>
+                        <table>
+                            <tr><th>Defecto</th><th>Causa</th><th>Solución</th></tr>
+                            <tr><td>Miopía</td><td>Globo ocular largo</td><td>Lentes divergentes</td></tr>
+                            <tr><td>Hipermetropía</td><td>Globo ocular corto</td><td>Lentes convergentes</td></tr>
+                            <tr><td>Astigmatismo</td><td>Córnea irregular</td><td>Lentes cilíndricos</td></tr>
+                        </table>
+                    `,
+                    preguntas: [
+                        {
+                            pregunta: "¿Qué células detectan los colores?",
+                            opciones: [
+                                { texto: "Conos", correcta: true },
+                                { texto: "Bastones", correcta: false },
+                                { texto: "Nociceptores", correcta: false }
+                            ],
+                            explicacion: "¡Bravo! Los conos permiten la visión en color."
+                        },
+                        {
+                            pregunta: "La retina proyecta imágenes:",
+                            opciones: [
+                                { texto: "Invertidas", correcta: true },
+                                { texto: "Volteadas", correcta: false },
+                                { texto: "Distorsionadas", correcta: false }
+                            ],
+                            explicacion: "✅ Sí! El cerebro las corrige posteriormente."
+                        },
+                        {
+                            pregunta: "¿Qué líquido rellena el globo ocular?",
+                            opciones: [
+                                { texto: "Humor vítreo", correcta: true },
+                                { texto: "Líquido cefalorraquídeo", correcta: false },
+                                { texto: "Plasma sanguíneo", correcta: false }
+                            ],
+                            explicacion: "💧 Exacto! Es un gel transparente."
+                        },
+                        {
+                            pregunta: "La pupila se regula mediante:",
+                            opciones: [
+                                { texto: "El iris", correcta: true },
+                                { texto: "La córnea", correcta: false },
+                                { texto: "El cristalino", correcta: false }
+                            ],
+                            explicacion: "🌈 Correcto! El iris controla la cantidad de luz."
+                        },
+                        {
+                            pregunta: "Visión nocturna depende de:",
+                            opciones: [
+                                { texto: "Bastones", correcta: true },
+                                { texto: "Conos", correcta: false },
+                                { texto: "Termorreceptores", correcta: false }
+                            ],
+                            explicacion: "🌙 Sí! Los bastones son más sensibles a la luz."
+                        }
+                    ]
+                },
+                // Todos los demás módulos con contenido completo...
+// Módulo Tacto
+{
+    id: 'tacto',
+    titulo: '✋ El Tacto',
+    teoria: `
+        <h2>Receptores Cutáneos</h2>
+        <div class="grid">
+            <div class="card">
+                <h4>Tipos</h4>
+                <p>• Corpúsculos de Meissner (tacto fino)</p>
+                <p>• Corpúsculos de Pacini (presión)</p>
+                <p>• Corpúsculos de Ruffini (calor)</p>
+                <p>• Corpúsculos de Krause (frío)</p>
+                <p>• Terminaciones libres (dolor)</p>
+            </div>
+        </div>
+
+        <h3>Distribución</h3>
+        <p>• Yemas de dedos: 2500 receptores/cm²</p>
+        <p>• Espalda: 100 receptores/cm²</p>
+    `,
+    preguntas: [
+        {
+            pregunta: "Los corpúsculos de Meissner detectan:",
+            opciones: [
+                { texto: "Tacto fino", correcta: true },
+                { texto: "Calor", correcta: false },
+                { texto: "Vibración", correcta: false }
+            ],
+            explicacion: "👆 Responsables de sensibilidad táctil."
+        },
+        {
+            pregunta: "El dolor es detectado por:",
+            opciones: [
+                { texto: "Terminaciones libres", correcta: true },
+                { texto: "Corpúsculos de Pacini", correcta: false },
+                { texto: "Corpúsculos de Ruffini", correcta: false }
+            ],
+            explicacion: "⚠️ Mecanismo de protección."
+        },
+        {
+            pregunta: "La mayor densidad de receptores está en:",
+            opciones: [
+                { texto: "Yemas de dedos", correcta: true },
+                { texto: "Espalda", correcta: false },
+                { texto: "Rodillas", correcta: false }
+            ],
+            explicacion: "🖐️ Alta sensibilidad táctil."
+        },
+        {
+            pregunta: "Los corpúsculos de Ruffini detectan:",
+            opciones: [
+                { texto: "Calor", correcta: true },
+                { texto: "Frío", correcta: false },
+                { texto: "Presión", correcta: false }
+            ],
+            explicacion: "🔥 Termorreceptores de alta temperatura."
+        },
+        {
+            pregunta: "La capa con receptores táctiles es:",
+            opciones: [
+                { texto: "Dermis", correcta: true },
+                { texto: "Epidermis", correcta: false },
+                { texto: "Hipodermis", correcta: false }
+            ],
+            explicacion: "🔍 Bajo la capa externa."
+        }
+    ]
+},
+
+// Módulo Sistema Nervioso
+{
+    id: 'sistema-nervioso',
+    titulo: '🧠 Sistema Nervioso',
+    teoria: `
+        <h2>División Principal</h2>
+        <div class="grid">
+            <div class="card">
+                <h4>Sistema Nervioso Central</h4>
+                <p>• Encéfalo</p>
+                <p>• Médula espinal</p>
+            </div>
+            <div class="card">
+                <h4>Sistema Nervioso Periférico</h4>
+                <p>• Nervios craneales</p>
+                <p>• Nervios espinales</p>
+            </div>
+        </div>
+
+        <h3>Tipos de Neuronas</h3>
+        <ul>
+            <li>Sensitivas (aferentes)</li>
+            <li>Motoras (eferentes)</li>
+            <li>Interneuronas</li>
+        </ul>
+    `,
+    preguntas: [
+        {
+            pregunta: "El cerebro pertenece al:",
+            opciones: [
+                { texto: "SNC", correcta: true },
+                { texto: "SNP", correcta: false },
+                { texto: "SNA", correcta: false }
+            ],
+            explicacion: "🧠 Centro de procesamiento principal."
+        },
+        {
+            pregunta: "Las neuronas motoras son:",
+            opciones: [
+                { texto: "Eferentes", correcta: true },
+                { texto: "Aferentes", correcta: false },
+                { texto: "Asociativas", correcta: false }
+            ],
+            explicacion: "⚡ Llevan señales desde el SNC."
+        },
+        {
+            pregunta: "El acto reflejo se procesa en:",
+            opciones: [
+                { texto: "Médula espinal", correcta: true },
+                { texto: "Cerebro", correcta: false },
+                { texto: "Cerebelo", correcta: false }
+            ],
+            explicacion: "⚡ Respuesta rápida sin consciencia."
+        },
+        {
+            pregunta: "El sistema autónomo controla:",
+            opciones: [
+                { texto: "Órganos internos", correcta: true },
+                { texto: "Músculos esqueléticos", correcta: false },
+                { texto: "Sentidos", correcta: false }
+            ],
+            explicacion: "❤️ Funciones involuntarias."
+        },
+        {
+            pregunta: "El hipotálamo regula:",
+            opciones: [
+                { texto: "Homeostasis", correcta: true },
+                { texto: "Movimiento", correcta: false },
+                { texto: "Memoria", correcta: false }
+            ],
+            explicacion: "⚖️ Equilibrio interno del cuerpo."
+        }
+    ]
+},
+
+// Módulo Sistema Endocrino
+{
+    id: 'endocrino',
+    titulo: '🎭 Sistema Endocrino',
+    teoria: `
+        <h2>Glándulas Principales</h2>
+        <div class="grid">
+            <div class="card">
+                <h4>Reguladoras</h4>
+                <p>• Hipotálamo</p>
+                <p>• Hipófisis</p>
+            </div>
+            <div class="card">
+                <h4>Metabólicas</h4>
+                <p>• Tiroides</p>
+                <p>• Páncreas</p>
+            </div>
+        </div>
+
+        <h3>Hormonas Clave</h3>
+        <ul>
+            <li>Insulina (regula glucosa)</li>
+            <li>Adrenalina (respuesta estrés)</li>
+            <li>Testosterona (desarrollo masculino)</li>
+        </ul>
+    `,
+    preguntas: [
+        {
+            pregunta: "La insulina se produce en:",
+            opciones: [
+                { texto: "Páncreas", correcta: true },
+                { texto: "Hígado", correcta: false },
+                { texto: "Tiroides", correcta: false }
+            ],
+            explicacion: "💉 Controla los niveles de azúcar."
+        },
+        {
+            pregunta: "La hormona del crecimiento la segrega:",
+            opciones: [
+                { texto: "Hipófisis", correcta: true },
+                { texto: "Hipotálamo", correcta: false },
+                { texto: "Suprarrenales", correcta: false }
+            ],
+            explicacion: "📈 Fundamental en desarrollo."
+        },
+        {
+            pregunta: "La tiroxina regula:",
+            opciones: [
+                { texto: "Metabolismo", correcta: true },
+                { texto: "Calcio", correcta: false },
+                { texto: "Estrés", correcta: false }
+            ],
+            explicacion: "⚡ Ritmo metabólico basal."
+        },
+        {
+            pregunta: "Las suprarrenales producen:",
+            opciones: [
+                { texto: "Cortisol", correcta: true },
+                { texto: "Insulina", correcta: false },
+                { texto: "Estrógenos", correcta: false }
+            ],
+            explicacion: "😰 Hormona del estrés."
+        },
+        {
+            pregunta: "La melatonina regula:",
+            opciones: [
+                { texto: "Sueño", correcta: true },
+                { texto: "Hambre", correcta: false },
+                { texto: "Sed", correcta: false }
+            ],
+            explicacion: "🌙 Producida por la pineal."
+        }
+    ]
+},
+
+// Módulo Control Hormonal
+{
+    id: 'control-hormonal',
+    titulo: '⚖️ Control Hormonal',
+    teoria: `
+        <h2>Mecanismos de Regulación</h2>
+        <div class="grid">
+            <div class="card">
+                <h4>Feedback Negativo</h4>
+                <p>• Mantiene equilibrio</p>
+                <p>• Ej: Regulación glucosa</p>
+            </div>
+            <div class="card">
+                <h4>Feedback Positivo</h4>
+                <p>• Amplifica señales</p>
+                <p>• Ej: Contracciones parto</p>
+            </div>
+        </div>
+
+        <h3>Ejemplo: Glucosa</h3>
+        <ol>
+            <li>Glucosa alta → Insulina</li>
+            <li>Glucosa baja → Glucagón</li>
+        </ol>
+    `,
+    preguntas: [
+        {
+            pregunta: "El feedback negativo sirve para:",
+            opciones: [
+                { texto: "Mantener homeostasis", correcta: true },
+                { texto: "Acelerar procesos", correcta: false },
+                { texto: "Producir hormonas", correcta: false }
+            ],
+            explicacion: "⚖️ Mecanismo de autorregulación."
+        },
+        {
+            pregunta: "Cuando baja la glucosa, se secreta:",
+            opciones: [
+                { texto: "Glucagón", correcta: true },
+                { texto: "Insulina", correcta: false },
+                { texto: "Adrenalina", correcta: false }
+            ],
+            explicacion: "📉 Liberado por el páncreas."
+        },
+        {
+            pregunta: "La oxitocina usa feedback:",
+            opciones: [
+                { texto: "Positivo", correcta: true },
+                { texto: "Negativo", correcta: false },
+                { texto: "Neutro", correcta: false }
+            ],
+            explicacion: "🤰 Refuerza contracciones uterinas."
+        },
+        {
+            pregunta: "La TSH estimula a:",
+            opciones: [
+                { texto: "Tiroides", correcta: true },
+                { texto: "Suprarrenales", correcta: false },
+                { texto: "Ovarios", correcta: false }
+            ],
+            explicacion: "🦋 Hormona estimulante tiroidea."
+        },
+        {
+            pregunta: "El cortisol regula:",
+            opciones: [
+                { texto: "Estrés", correcta: true },
+                { texto: "Crecimiento", correcta: false },
+                { texto: "Apetito", correcta: false }
+            ],
+            explicacion: "😰 Glucocorticoides."
+        }
+    ]
+},
+
+// Módulo Drogas
+{
+    id: 'drogas',
+    titulo: '⚠️ Drogas y Sistema Nervioso',
+    teoria: `
+        <h2>Tipos de Drogas</h2>
+        <div class="grid">
+            <div class="card">
+                <h4>Depresoras</h4>
+                <p>• Alcohol</p>
+                <p>• Opiáceos</p>
+            </div>
+            <div class="card">
+                <h4>Estimulantes</h4>
+                <p>• Cocaína</p>
+                <p>• Anfetaminas</p>
+            </div>
+        </div>
+
+        <h3>Efectos Neurológicos</h3>
+        <ul>
+            <li>Alteran neurotransmisión</li>
+            <li>Modifican receptores</li>
+            <li>Afectan plasticidad sináptica</li>
+        </ul>
+    `,
+    preguntas: [
+        {
+            pregunta: "La cocaína afecta principalmente a:",
+            opciones: [
+                { texto: "Dopamina", correcta: true },
+                { texto: "Serotonina", correcta: false },
+                { texto: "Insulina", correcta: false }
+            ],
+            explicacion: "💊 Bloquea recaptación."
+        },
+        {
+            pregunta: "El alcohol es un:",
+            opciones: [
+                { texto: "Depresor del SNC", correcta: true },
+                { texto: "Estimulante", correcta: false },
+                { texto: "Alucinógeno", correcta: false }
+            ],
+            explicacion: "🍷 Ralentiza funciones cerebrales."
+        },
+        {
+            pregunta: "La heroína es un derivado de:",
+            opciones: [
+                { texto: "Opio", correcta: true },
+                { texto: "Coca", correcta: false },
+                { texto: "Cannabis", correcta: false }
+            ],
+            explicacion: "💀 Opioide sintético."
+        },
+        {
+            pregunta: "Las benzodiacepinas actúan sobre:",
+            opciones: [
+                { texto: "GABA", correcta: true },
+                { texto: "Dopamina", correcta: false },
+                { texto: "Adrenalina", correcta: false }
+            ],
+            explicacion: "😴 Neurotransmisor inhibitorio."
+        },
+        {
+            pregunta: "El THC afecta a:",
+            opciones: [
+                { texto: "Receptores cannabinoides", correcta: true },
+                { texto: "Termorreceptores", correcta: false },
+                { texto: "Quimiorreceptores", correcta: false }
+            ],
+            explicacion: "🌿 Principio activo del cannabis."
+        }
+    ]
+}
+            ]
+        };
+
+        let capituloActual = null;
+        let preguntaActual = 0;
+        let puntuacion = 0;
+
+        function mostrarMenu() {
+            const main = document.getElementById('mainContent');
+            main.innerHTML = `
+                <section class="menu-container">
+                    ${contenido.capitulos.map(capitulo => `
+                        <div class="chapter-card" onclick="cargarCapitulo('${capitulo.id}')">
+                            <h3>${capitulo.titulo}</h3>
+                            <p>${capitulo.teoria.split('\n')[0].substring(0, 80)}...</p>
+                        </div>
+                    `).join('')}
+                </section>
+            `;
+        }
+
+        function cargarCapitulo(id) {
+            capituloActual = contenido.capitulos.find(c => c.id === id);
+            preguntaActual = 0;
+            puntuacion = 0;
+            
+            const main = document.getElementById('mainContent');
+            main.innerHTML = `
+                <section class="theory-container">
+                    ${capituloActual.teoria}
+                    <button class="nav-btn" onclick="iniciarTest()">Comenzar test 🚀</button>
+                    <button class="nav-btn" onclick="mostrarMenu()">Volver al menú</button>
+                </section>
+            `;
+        }
+
+        function iniciarTest() {
+            const main = document.getElementById('mainContent');
+            main.innerHTML = `
+                <section class="quiz-container">
+                    <div class="question-header">
+                        <h2>${capituloActual.titulo}</h2>
+                        <div class="score">🏆 Puntos: <span>0</span></div>
+                    </div>
+                    <div class="question-body" id="preguntaActual"></div>
+                    <button class="nav-btn hidden" id="siguienteBtn" onclick="siguientePregunta()">Siguiente →</button>
+                    <button class="nav-btn" onclick="mostrarMenu()">Volver al menú</button>
+                </section>
+            `;
+            
+            mostrarPregunta();
+        }
+
+        function mostrarPregunta() {
+            const pregunta = capituloActual.preguntas[preguntaActual];
+            const opcionesHTML = pregunta.opciones.map((opcion, index) => `
+                <div class="option" onclick="manejarRespuesta(${index}, this)">
+                    ${String.fromCharCode(65 + index)}) ${opcion.texto}
+                </div>
+            `).join('');
+
+            document.getElementById('preguntaActual').innerHTML = `
+                <h3>Pregunta ${preguntaActual + 1}</h3>
+                <p>${pregunta.pregunta}</p>
+                ${opcionesHTML}
+            `;
+        }
+
+        function manejarRespuesta(index, elemento) {
+            const opcion = capituloActual.preguntas[preguntaActual].opciones[index];
+            const opciones = document.querySelectorAll('.option');
+            
+            opciones.forEach(opt => opt.classList.add('disabled'));
+            elemento.classList.add(opcion.correcta ? 'correct' : 'wrong');
+            
+            if(opcion.correcta) {
+                puntuacion += 100;
+                document.querySelector('.score span').textContent = puntuacion;
+            }
+            
+            document.getElementById('siguienteBtn').classList.remove('hidden');
+        }
+
+        function siguientePregunta() {
+            preguntaActual++;
+            if(preguntaActual < capituloActual.preguntas.length) {
+                mostrarPregunta();
+                document.getElementById('siguienteBtn').classList.add('hidden');
+            } else {
+                finalizarTest();
+            }
+        }
+
+        function finalizarTest() {
+            const main = document.getElementById('mainContent');
+            main.innerHTML = `
+                <section class="quiz-container">
+                    <h2>🏁 Test Completado!</h2>
+                    <p>Puntuación final: ${puntuacion} puntos</p>
+                    <button class="nav-btn" onclick="mostrarMenu()">Volver al menú</button>
+                    <button class="nav-btn" onclick="iniciarTest()">Repetir test</button>
+                </section>
+            `;
+        }
+
+        // Iniciar aplicación
+        mostrarMenu();
+    </script>
 </body>
 </html>
