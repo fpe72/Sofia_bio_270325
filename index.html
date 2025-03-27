@@ -1,25 +1,39 @@
-<div class="container">
-  <div class="header">
-    <h1>🌱 BioMaster Sofía 🧠</h1>
-    <div class="progress-bar">
-      <div class="progress"></div>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BioMaster Sofía 🧠</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>🌱 BioMaster Sofía 🧠</h1>
+      <div class="progress-bar">
+        <div class="progress"></div>
+      </div>
+    </div>
+
+    <div class="chapters-container"></div>
+
+    <div class="question-container hidden">
+      <div class="question-header">
+        <h2 class="chapter-title"></h2>
+        <div class="score">🏆 Puntos: <span>0</span></div>
+      </div>
+      <div class="question-body"></div>
+      <div class="explanation hidden"></div>
+      <button class="next-btn hidden">Continuar →</button>
     </div>
   </div>
 
-  <div class="chapters-container"></div>
-
-  <div class="question-container hidden">
-    <div class="question-header">
-      <h2 class="chapter-title"></h2>
-      <div class="score">🏆 Puntos: <span>0</span></div>
-    </div>
-    <div class="question-body"></div>
-    <div class="explanation hidden"></div>
-    <button class="next-btn hidden">Continuar →</button>
+  <div class="celebration hidden">
+    <div class="message">¡Capítulo Dominado! 🎉</div>
+    <button class="back-btn">Volver a Capítulos</button>
   </div>
-</div>
 
-<div class="celebration hidden">
-  <div class="message">¡Capítulo Dominado! 🎉</div>
-  <button class="back-btn">Volver a Capítulos</button>
-</div>
+  <!-- Tu archivo JS personalizado -->
+  <script src="App.js"></script>
+</body>
+</html>
