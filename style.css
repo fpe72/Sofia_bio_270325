@@ -1,0 +1,138 @@
+:root {
+  --primary: #7C3AED;
+  --secondary: #A78BFA;
+  --accent: #F59E0B;
+  --background: #F3F4F6;
+  --text: #1F2937;
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+  background: var(--background);
+  color: var(--text);
+  margin: 0;
+  padding: 20px;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.progress-bar {
+  height: 12px;
+  background: #E5E7EB;
+  border-radius: 6px;
+  margin: 20px 15%;
+  overflow: hidden;
+}
+
+.progress {
+  height: 100%;
+  background: var(--primary);
+  width: 0;
+  transition: width 0.5s ease;
+}
+
+.chapters-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.chapter-card {
+  background: white;
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.chapter-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 12px rgba(0,0,0,0.1);
+}
+
+.chapter-card.locked {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.question-container {
+  background: white;
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 10px 15px rgba(0,0,0,0.05);
+  margin-top: 20px;
+}
+
+.option {
+  padding: 16px 20px;
+  margin: 12px 0;
+  border: 2px solid #E5E7EB;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.option:hover:not(.disabled) {
+  background: #F3F4F6;
+  transform: scale(1.02);
+}
+
+.option.correct {
+  background: #D1FAE5;
+  border-color: #34D399;
+}
+
+.option.wrong {
+  background: #FEE2E2;
+  border-color: #F87171;
+}
+
+.next-btn {
+  background: var(--primary);
+  color: white;
+  padding: 12px 30px;
+  border-radius: 8px;
+  border: none;
+  margin-top: 20px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.next-btn:hover {
+  transform: translateX(5px);
+}
+
+.celebration {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 40px;
+  border-radius: 24px;
+  text-align: center;
+  box-shadow: 0 20px 25px rgba(0,0,0,0.1);
+  z-index: 1000;
+}
+
+.hidden { display: none; }
+
+.back-btn {
+  background: var(--accent);
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 20px;
+}
